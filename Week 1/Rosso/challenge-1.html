@@ -1,0 +1,69 @@
+<html>
+<head>
+<style>
+#answer {
+display:none;}
+</style>
+</head>
+<body>
+<h1 id="checking">Checking numbers.....</h1>
+<h1 id="answer">The answer is: <span id="return" style="color:green"></span></h1>
+<script type="text/javascript">
+
+//check if any of the numbers in the array given add up to the target number stored in k
+
+//the array given
+const numbers = [10, 15, 3, 7];
+
+//the target number 
+let k = 17;
+
+//function which takes the target number stored in k as argument
+function checkNumbers(targetNumber) {
+  
+    //set up a switch statement that checks the outcome of each combo against the target number stored in k
+    switch(targetNumber) {
+		
+		case numbers[0] + numbers[1]:
+		return true;
+		break;
+		
+		case numbers[0] + numbers[2]:
+		return true;
+		break;
+		
+		case numbers[0] + numbers[3]:
+		return true;
+		break;
+		 	
+		case numbers[1] + numbers[2]:
+		return true;
+		break;
+		
+		case numbers[1] + numbers[3]:
+		return true;
+		break;
+		
+		case numbers[2] + numbers[3]:
+		return true;
+		break;	
+		
+	}
+	
+	//if its any of the above it will return true - if not then return false
+	return false
+	 
+}
+
+//call the function and log it to the console 
+console.log(checkNumbers(k));
+
+//add the result to the HTML after 3 seconds just to be fancy
+setTimeout(function(){
+ document.getElementById('checking').style.display = 'none';
+ document.getElementById('answer').style.display = 'block';
+ document.getElementById('return').innerHTML = checkNumbers(k);
+}, 3000);
+</script>
+</body>
+</html>
