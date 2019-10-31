@@ -1,0 +1,56 @@
+<html>
+<head>
+</head>
+<body>
+<h1 id="problem">Create a function that returns the index of the first vowel in a string.</h1>
+<h2 id="solution"></h2>
+<script type="text/javascript">
+
+//the array that holds the vowels
+const vowels = ['a', 'e', 'i', 'o', 'u']
+
+//the array that holds a list of random words
+const words = ['Halloween', 'Peru', 'Irish Life', 'Liverpool', 'Code', 'JavaScript'];
+
+//the random word we will check that gets generated from the array of words converted to lower case
+let word = words[Math.floor(Math.random() * words.length)].toLowerCase();
+
+//the function to find the vowel inside the given word
+function findVowel(w) {
+      
+	  //loop through the letters contained in the word
+	  for(let i=0;i < w.length; i++) {
+	      
+		  let letter = w[i]; //get the current letter in the loop
+		  
+		  //check if the current letter is included in the vowels array
+          if(vowels.includes(letter)) {
+		    
+			let vowel = letter; //assign the letter to a vowel
+			let position = vowels.indexOf(vowel); //get the position of the vowel in the vowels array
+			let wordWithTitles = titleCase(word); //convert the word back to original case
+			
+			//construct the output to be rendered as HTML on screen
+			let solution = "<h2><span style='color:red'>"+wordWithTitles+"</span> contains <span style='color:green'>'"+vowel+"'</span> at position <span style='color:blue'>"+position+"</span></h2>";
+			
+			//output the solution to the console and to the screen as HTML
+			console.log(wordWithTitles + ' contains ' + vowel + ' at position ' + position);
+			document.getElementById("solution").innerHTML = solution;
+			
+	        return true; // render the loop successful so it doesn't run again
+			
+		    }
+	  }	  	  
+}
+
+//this function converts the word back to its original case (title case)
+function titleCase(str) {
+  return str.toLowerCase().split(' ').map(function(word) {
+    return word.replace(word[0], word[0].toUpperCase());
+  }).join(' ');
+}
+
+findVowel(word); //call the function
+</script>
+</body>
+</html>
