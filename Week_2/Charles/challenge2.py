@@ -16,9 +16,9 @@ def first_vowel_recursive(txt, i=0):
     # list of vowels
     vowels = ["a", "e", "o", "i", "u"]
     txt = [letter.lower() for letter in txt]
-    letter = txt.pop(0)
-    if letter in vowels:
-        print(i, letter)  # comment this entire line if running time test
+    compare_letter = txt.pop(0)
+    if compare_letter in vowels:
+        print(i, compare_letter)  # comment this entire line if running time test
         pass
         
     else:
@@ -31,7 +31,7 @@ first_vowel_recursive('Why nymphs flyby this')
 """
 You can uncomment the time test below to do a speed test on the two fucntions for doing this,
 I've run it a couple of times for 100000 iterations and the loop function is on average 7 times faster
-"""
+# """
 
 # if __name__ == "__main__":
 #     import timeit
