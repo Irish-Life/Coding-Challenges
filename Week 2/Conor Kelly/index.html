@@ -1,0 +1,16 @@
+<p>Sentence: "Why psyche yourself up?"</p>
+
+<p id="box" style="border:1px solid grey; width: 20px; padding: 20px; border-radius: 30px;text-align: center;"></p>
+
+
+<script>
+
+    let str = "Why psyche yourself up?";
+
+    let regex = /[aeiou]/i
+    
+    console.log( str.search(regex))
+
+    document.getElementById("box").innerHTML = (str.search(regex))
+
+</script>
