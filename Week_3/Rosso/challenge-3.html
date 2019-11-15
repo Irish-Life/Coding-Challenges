@@ -1,0 +1,44 @@
+
+<html>
+<head>
+</head>
+<body>
+<textarea id="textarea" rows="30" cols="101">
+</textarea>
+<br/>
+<br/>
+<button id="check" onclick="checkHTML(snippet)">Check HTML</button>
+<p id="answer"></p>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+var snippet = "";
+
+$("#textarea").on("change keyup paste", function() {
+
+	snippet = $(this).val();
+});
+
+
+function checkHTML(html) {
+
+  html = html.replace(/<[^>]*\/\s?>/g, '');       // Remove all self closing tags
+  html = html.replace(/<(br|hr|img).*?>/g, '');  // Remove all <br>, <hr>, and <img> tags
+
+  const openingTags = html.match(/<[^\/].*?>/g) || [];        // Get remaining opening tags
+  const closingTags = html.match(/<\/.+?>/g) || [];           // Get remaining closing tags
+
+  if(openingTags.length === closingTags.length) {
+
+	 document.getElementById('answer').innerHTML = 'Your code looks good. Nice one!';
+
+  } else {
+
+	  document.getElementById('answer').innerHTML = 'Oops! You are missing some tags please check your code';
+  }
+
+}
+
+</script>
+</body>
+</html>
