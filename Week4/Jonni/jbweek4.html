@@ -1,0 +1,73 @@
+<!-- 
+
+ An ISBN number is legal if it consists of 10 digits and  d_1 + 2*d_2 + 3*d_3 ... + 10*d_10 is a multiple of 11
+
+
+Pass: 0201314525
+-->
+<html>
+<head>
+<style>
+form {
+  margin: 1em;
+}
+
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.results {
+  height: 50px;
+  width: 200px; 
+  background-color: #efefef;
+  text-align: center;
+}
+
+
+</style>
+</head>
+<body>
+<main class="container">
+  <form id="mainForm" action="javascript:void(0)" method="post">
+    <label for="isbn">Enter an ISBN</label>
+    <input type="number" id="isbn">
+  </form>
+  
+  <aside id="jbresult" class="results">
+    
+  </aside>
+  
+</main>
+<script>
+var form = document.getElementById('mainForm');
+
+form.addEventListener("submit", validateISBN);
+
+function validateISBN(e) {;
+  let input = document.getElementById("isbn").value;
+  let result =  document.getElementById("jbresult");
+  let msg = "Not valid";
+  let data = [];
+                          
+  if(!(input)) {
+    result.innerHTML = msg;
+  }
+  else {
+    data = input.split('').reverse();
+    
+    data = data.map(Number);
+
+    let output = data.reduce((accumulator, currentValue, index) => {
+      return accumulator += currentValue * (index + 1);
+    });
+    result.innerHTML = output % 11 == 0 ? "Valid" : msg;
+  }
+  e.preventDefault();
+
+}
+</script>
+</body>
+</html>
